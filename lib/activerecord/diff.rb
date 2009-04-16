@@ -12,7 +12,7 @@ module ActiveRecord
         if attrs.nil?
           content_columns.map { |column| column.name }
         elsif attrs.length == 1 && Hash === attrs.first
-          columns = content_columns.map { |column| column.name }
+          columns = content_columns.map { |column| column.name.to_sym }
 
           columns + (attrs.first[:include] || []) - (attrs.first[:exclude] || [])
         else
