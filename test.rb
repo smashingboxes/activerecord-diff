@@ -70,4 +70,10 @@ class TestCase < Test::Unit::TestCase
     assert_diff @bob, {:name => 'joe'}, {:name => ['bob', 'joe']}
   end
 
+  def test_inclusion_and_exclusion
+    Person.diff :include => [:id], :exclude => [:email_address]
+
+    assert_diff @alice, @bob, {:id => [1, 2], :name => %w( alice bob )}
+  end
+
 end
