@@ -36,3 +36,8 @@ Alternatively, you can specify exactly which columns to compare:
 
 This is an updated version of the riff rails plugin (still available at
 http://tfletcher.com/dev/rails-plugins).
+
+
+To the extent possible under law, Tim Fletcher has waived all copyright and
+related or neighboring rights to activerecord-diff. This work is published
+from the United Kingdom. http://creativecommons.org/publicdomain/zero/1.0/
