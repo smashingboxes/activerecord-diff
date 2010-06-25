@@ -1,8 +1,8 @@
-ActiveRecord diff functionality.
+Simple ActiveRecord diff functionality.
 
-Quick start:
+Example usage:
 
-  require 'activerecord/diff'
+  require 'active_record/diff'
 
   class User < ActiveRecord::Base
     include ActiveRecord::Diff
@@ -34,8 +34,7 @@ Alternatively, you can specify exactly which columns to compare:
   end
 
 
-This is an updated version of the riff rails plugin (still available at
-http://tfletcher.com/dev/rails-plugins).
+This is an updated version of the "riff" rails plugin.
 
 
 To the extent possible under law, Tim Fletcher has waived all copyright and
