@@ -1,6 +1,5 @@
 module ActiveRecord
   module Diff
-
     module ClassMethods
       def diff(*attrs)
         write_inheritable_attribute(:diff_attrs, attrs)
@@ -58,6 +57,5 @@ module ActiveRecord
         diff_hash
       end
     end
-
   end
 end

@@ -1,5 +1,5 @@
-require 'activerecord'
-require 'activerecord/diff'
+require 'active_record'
+require 'active_record/diff'
 require 'test/unit'
 
 
@@ -23,7 +23,6 @@ Person.create :name => 'bob', :email_address => 'bob@example.org'
 Person.create :name => 'eve', :email_address => 'bob@example.org'
 
 class TestCase < Test::Unit::TestCase
-
   def setup
     @people = Person.find(:all)
 
@@ -75,5 +74,4 @@ class TestCase < Test::Unit::TestCase
 
     assert_diff @alice, @bob, {:id => [1, 2], :name => %w( alice bob )}
   end
-
 end
