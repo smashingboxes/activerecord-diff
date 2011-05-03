@@ -35,13 +35,17 @@ module ActiveRecord
         old_record, new_record = self, other_record
       end
 
-      if new_record.is_a?(Hash)
+      if new_record.is_a?(Array)
+        diff_each(self.class.diff_attrs) do |attr_name|
+          [attr_name, old_record.send(attr_name), new_record.map { |r| r.send(attr_name) }]
+        end
+      elsif new_record.is_a?(Hash)
         diff_each(new_record) do |(attr_name, hash_value)|
-          [attr_name, old_record.send(attr_name), hash_value]
+          [attr_name, old_record.send(attr_name), [hash_value]]
         end
       else
         diff_each(self.class.diff_attrs) do |attr_name|
-          [attr_name, old_record.send(attr_name), new_record.send(attr_name)]
+          [attr_name, old_record.send(attr_name), [new_record.send(attr_name)]]
         end
       end
     end
