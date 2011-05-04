@@ -17,6 +17,14 @@ Example usage:
   alice.diff(bob)  # => {:name => ['alice', 'bob'], :email_address => ['alice@example.org', 'bob@example.org']}
 
   alice.diff({:name => 'eve'})  # => {:name => ['alice', 'eve']}
+  
+Multiple objects can also be compared. Example:
+
+  eve = User.create(:name => 'eve', :email_address => 'bob@example.org')
+  
+  alice.diff?([bob, eve])  # => true
+  
+  alice.diff([bob, eve])  # => { :name => ['alice', 'bob', 'eve'], :email_address => ['alice@example.org', 'bob@example.org'] }
 
 
 By default, ActiveRecord::Base.content_columns is used to decide which attributes
@@ -40,3 +48,7 @@ This is an updated version of the "riff" rails plugin.
 To the extent possible under law, Tim Fletcher has waived all copyright and
 related or neighboring rights to activerecord-diff. This work is published
 from the United Kingdom. http://creativecommons.org/publicdomain/zero/1.0/
+
+Contributions
+
+- Zachary Porter ( zporter )
