@@ -78,4 +78,9 @@ class TestCase < Test::Unit::TestCase
   def test_diff_against_multiple_records
     assert_diff @bob, [ @alice, @eve ], { :name => %w( bob alice eve ), :email_address => %w( bob@example.org alice@example.org ) }
   end
+  
+  def test_diff_query_with_multiple_records
+    assert @bob.diff?([ @alice, @eve ])
+    assert_equal false, @bob.diff?([ @bob, @bob ])
+  end
 end
