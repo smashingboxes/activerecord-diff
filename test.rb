@@ -1,5 +1,5 @@
 require 'active_record'
-require 'active_record/diff'
+require './lib/active_record/diff'
 require 'test/unit'
 
 
@@ -73,5 +73,9 @@ class TestCase < Test::Unit::TestCase
     Person.diff :include => [:id], :exclude => [:email_address]
 
     assert_diff @alice, @bob, {:id => [1, 2], :name => %w( alice bob )}
+  end
+  
+  def test_diff_against_multiple_records
+    assert_diff @bob, [ @alice, @eve ], { :name => %w( bob alice eve ), :email_address => %w( bob@example.org alice@example.org ) }
   end
 end

@@ -52,10 +52,16 @@ module ActiveRecord
 
     def diff_each(enum)
       enum.inject({}) do |diff_hash, attr_name|
-        attr_name, old_value, new_value = *yield(attr_name)
+        attr_name, old_value, new_values = *yield(attr_name)
 
-        unless old_value === new_value
-          diff_hash[attr_name.to_sym] = [old_value, new_value]
+        new_values.each do |new_value|
+          unless old_value === new_value
+            if diff_hash[attr_name.to_sym]
+              diff_hash[attr_name.to_sym] << new_value
+            else
+              diff_hash[attr_name.to_sym] = [old_value, new_value]
+            end
+          end
         end
 
         diff_hash
